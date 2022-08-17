@@ -1,0 +1,22 @@
+<div class="form-floating mb-3">
+    <input
+    name="name"
+  type="text"
+  class="form-control"
+  [(ngModel)]="ngModel"
+  [ngbTypeahead]="search"
+  (focus)="focus$.next($any($event).target.value)"
+  (click)="click$.next($any($event).target.value)"
+  #instance="ngbTypeahead"
+  placeholder=" "/>
+  
+    <!-- <input class="form-control" 
+        [name]="name"
+        #instance="ngbTypeahead"
+        [ngbTypeahead]="search"
+        [(ngModel)]="ngModel" 
+        (focus)="focus$.next($any($event).target.value)"
+        (click)="click$.next($any($event).target.value)"
+        placeholder=" " /> -->
+
+    </div>

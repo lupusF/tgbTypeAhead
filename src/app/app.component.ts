@@ -54,7 +54,7 @@ export class AppComponent {
   //    }
   
   onSave() {
-    
+    console.log("onSave", this.model);
     this.apiService.onSave(this.model);
   }
 }

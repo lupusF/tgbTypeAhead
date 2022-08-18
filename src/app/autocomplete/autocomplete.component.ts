@@ -43,18 +43,29 @@ export class AutocompleteComponent<T, V> implements ControlValueAccessor {
 
     return piped.pipe(map(term => (term === '' ? this.data
           : this.data.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1)).slice(0, 10)))
-     }
+  }
 
-  onChange: any = () => {}
+  onChange: any = () => {
+    console.log("onChange");
+  }
   onTouch: any = () => {}
 
+  onChange1(event: any) {
+    console.log("onChange1", event);
+    this.ngModel = event
+
+    this.onChange(event)    
+  }
+
   set value(val: string){
+    console.log("set value", val);
     this.ngModel = val
     this.onChange(val)
     this.onTouch(val)
 }
 
   writeValue(value: any): void {
+    console.log("writeValue", value);
     this.value = value;
   }
   registerOnChange(fn: any): void {
@@ -78,6 +89,7 @@ export class AutocompleteComponent<T, V> implements ControlValueAccessor {
       const item = e.item as T;
       this.touch();
       this.onChange(item);
+      console.log("selectItem", item);
       //this.ngModelChange.emit(this.valueFormatter(item));
     });
   }
